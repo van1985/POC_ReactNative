@@ -12,78 +12,59 @@ import {
   Text,
   View,
   ListView,
+  Navigator,
+  TouchableOpacity,
 } from 'react-native';
 
+
+var LoginPage = require('./app/routes/LoginPage');
+var MainPage = require('./app/routes/MainPage');
 
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
 class POC_ReactNative extends Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2,
-      }),
-      loaded: false,
-    };
-  }
-
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  fetchData() {
-    fetch(REQUEST_URL)
-      .then((response) => response.json())
-      .then((responseData) => {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
-          loaded: true,
-        });
-      })
-      .done();
-  }
-
   render() {
-    if (!this.state.loaded) {
-      return this.renderLoadingView();
+    return (
+   <Navigator
+            initialRoute={{id: 'LoginPage', name: 'Index'}}
+            renderScene={this.renderScene.bind(this)}
+            configureScene={(route) => {
+              if (route.sceneConfig) {
+                return route.sceneConfig;
+              }
+              return Navigator.SceneConfigs.FloatFromRight;
+            }} />
+    );
+  }
+
+   renderScene(route, navigator) {
+    var routeId = route.id;
+    if (routeId === 'LoginPage') {
+      return (
+        <LoginPage
+          navigator={navigator} />
+      );
     }
-
-    return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderMovie}
-        style={styles.listView}
-      />
-    );
+    if (routeId === 'MainPage') {
+      return (
+        <MainPage
+          navigator={navigator} />
+      );
+    }
+    return this.noRoute(navigator);
   }
 
-  renderLoadingView() {
+  noRoute(navigator) {
     return (
-      <View style={styles.container}>
-        <Text>
-          Loading movies...
-        </Text>
+      <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
+        <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}
+            onPress={() => navigator.pop()}>
+          <Text style={{color: 'red', fontWeight: 'bold'}}>The page not exist - 404 Error</Text>
+        </TouchableOpacity>
       </View>
     );
   }
-
-  renderMovie(movie) {
-    return (
-      <View style={styles.container}>
-        <Image
-          source={{uri: movie.posters.thumbnail}}
-          style={styles.thumbnail}
-        />
-        <View style={styles.rightContainer}>
-          <Text style={styles.title}>{movie.title}</Text>
-          <Text style={styles.year}>{movie.year}</Text>
-        </View>
-      </View>
-    );
-  }
-
 
 }
 
