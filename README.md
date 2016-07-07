@@ -27,8 +27,8 @@ For run the app in linux:
   
 ##Libraries  
   
-| Library        | Version           | Summary  |
-| -------------- |:-------------:| -----:|
+| Library          | Version           | Summary  |
+| ---------------- |:-------------:| -----:|
 | react          | 15.2.0 | React (sometimes styled React.js or ReactJS) is an open-source JavaScript library providing a view for data rendered as HTML. |
 | react-native      | 0.28.0      |   React Native lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components. |
 | react-native-swiper | 1.4.6      |  Page Swiper component for React Native. |
