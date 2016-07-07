@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 
 
-var LoginPage = require('./app/routes/LoginPage');
+var SplashPage = require('./app/routes/SplashPage');
 var MainPage = require('./app/routes/MainPage');
 
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
@@ -27,7 +27,7 @@ class POC_ReactNative extends Component {
   render() {
     return (
    <Navigator
-            initialRoute={{id: 'LoginPage', name: 'Index'}}
+            initialRoute={{id: 'SplashPage', name: 'Index'}}
             renderScene={this.renderScene.bind(this)}
             configureScene={(route) => {
               if (route.sceneConfig) {
@@ -40,9 +40,9 @@ class POC_ReactNative extends Component {
 
    renderScene(route, navigator) {
     var routeId = route.id;
-    if (routeId === 'LoginPage') {
+    if (routeId === 'SplashPage') {
       return (
-        <LoginPage
+        <SplashPage
           navigator={navigator} />
       );
     }

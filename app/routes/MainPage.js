@@ -17,7 +17,11 @@ import {
 
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
+var ScrollableTabView = require('react-native-scrollable-tab-view');
+
 import ThumbnailMovie from '../components/ThumbnailMovie';
+
+
 
 class MainPage extends Component {
   
@@ -53,19 +57,20 @@ class MainPage extends Component {
     }
 
     return (
+      
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this.renderMovie}
         style={styles.listView}
       />
-    );
+          );
   }
 
   renderLoadingView() {
     return (
       <View style={styles.container}>
         <Text>
-          Loading movies...
+          Loading movies ...
         </Text>
       </View>
     );

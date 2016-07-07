@@ -16,3 +16,11 @@ For run the app in linux:
 ####Device connected   
 - Run the command: sudo react-native start
 - Then the command: adb reverse tcp:8081 tcp:8081 
+
+
+
+##Knowledge
+
+- React
+- React-native
+- Flexbox
