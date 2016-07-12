@@ -12,18 +12,27 @@ import {
   View,
   ListView,
   TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 
+var ToolbarAndroid = require('ToolbarAndroid');
 
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
-var ScrollableTabView = require('react-native-scrollable-tab-view');
+//var ScrollableTabView = require('react-native-scrollable-tab-view');
 
 import ThumbnailMovie from '../components/ThumbnailMovie';
 
+var DrawerLayout = require('react-native-drawer-layout');
 
+class MainPage extends React.Component {
 
-class MainPage extends Component {
+  closeControlPanel = () => {
+    this._drawer.close()
+  };
+  openControlPanel = () => {
+    this._drawer.open()
+  };
   
   constructor(props) {
     super(props);
@@ -56,13 +65,67 @@ class MainPage extends Component {
       return this.renderLoadingView();
     }
 
-    return (
+    var navigationView = (
+    <View style={{flex: 1, backgroundColor: '#EDEDEC'}}>
+
+      <Image source={require('../img/header.jpg')} />
       
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderMovie}
-        style={styles.listView}
-      />
+      
+
+      <View style={{ flex:1, flexDirection:'row'}}>
+      <Image source={require('../img/icon_user.png')} style={{marginLeft:10, marginTop: 10}}/>
+      <Text style={{fontSize: 18, textAlign: 'left', marginLeft: 20, marginTop:20}}>Login</Text>
+      </View>
+      
+      <View style={{ flex:1, flexDirection:'row'}}>
+        <Image source={require('../img/icon_home.png')} style={{marginLeft:10, marginTop: 10}}/>
+        <Text style={{fontSize: 18, textAlign: 'left', marginLeft: 20, marginTop:20}}>Home</Text>
+      </View>
+
+      <View style={{ flex:1, flexDirection:'row'}}>
+        <Image source={require('../img/icon_settings.png')} style={{marginLeft:10, marginTop: 10}}/>
+        <Text style={{fontSize: 18, textAlign: 'left', marginLeft: 20, marginTop:20}}>Settings</Text>
+      </View>
+      
+    </View>);
+
+    return (
+      <DrawerLayout
+      drawerWidth={300}
+      drawerPosition={DrawerLayout.positions.Left}
+      renderNavigationView={() => navigationView}
+      ref={(drawer) => { return this.drawer = drawer  }}>
+      <ToolbarAndroid
+          navIcon={require('../img/menu.png')}
+          onIconClicked={() => this.drawer.openDrawer()}
+          style={styles.toolbar}
+          title="" />
+      
+      <View style={{flex: 1,flexDirection: 'column'}}>
+        
+        <View style={{ height:180, backgroundColor: '#4D75B3', flexDirection: 'column', alignItems: 'center'}}>
+
+          <Image source={require('../img/avatar.png')} style={{ width:68, height: 80, opacity: 0.5}} />
+          <Text style={{fontSize:18, color: 'white', marginTop:15}}>Bienvenido</Text>
+          <Text style={{fontSize:14, color: 'white', marginTop:5}}>Miercoles 15/06 - 17:10 hs</Text>
+
+        </View>
+
+      </View>
+
+      <View style={{flex: 2,flexDirection: 'column', padding:8, marginTop:25}}>
+        <View style={{ height:140, backgroundColor: '#7BB5B2', alignItems: 'center', flexDirection: 'row' ,justifyContent: 'space-between'}}>
+          <Image source={require('../img/icon_truck.png')} style={{ width:90, height:65, opacity: 0.5, marginLeft:20}} />
+          <Text style={{ fontSize:18, color: 'white', fontWeight: 'bold', marginRight: 50}}>Movimientos</Text>
+        </View>
+
+        <View style={{ height:140, backgroundColor: '#856DA6', marginTop:10, alignItems: 'center', flexDirection: 'row' ,justifyContent: 'space-between'}}>
+          <Image source={require('../img/inventory.png')} style={{ width:45, height:80, opacity: 0.5, marginLeft:35}} />
+          <Text style={{ fontSize:18, color: 'white', fontWeight: 'bold', marginRight: 50}}>Inventario</Text>
+      </View>
+      </View>
+
+    </DrawerLayout>
           );
   }
 
@@ -117,6 +180,10 @@ const styles = StyleSheet.create({
   thumbnail: {
     width: 53,
     height: 81,
+  },
+  toolbar: {
+    backgroundColor: '#4D75B3',
+    height: 56,
   }
 });
 

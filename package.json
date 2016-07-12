@@ -6,8 +6,10 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react": "15.2.0",
+    "react": "^15.0.2",
     "react-native": "0.28.0",
+    "react-native-drawer": "2.0",
+    "react-native-drawer-layout": "^1.0.0",
     "react-native-scrollable-tab-view": "0.5.2",
     "react-native-swiper": "1.4.6"
   }

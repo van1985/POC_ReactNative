@@ -14,7 +14,7 @@ import {
 
 var Swiper = require('react-native-swiper')
 
-class SplashPage extends Component {
+class SplashPage extends React.Component {
   render() {
     return (      
       <Swiper style={styles.wrapper} showsButtons={true}>

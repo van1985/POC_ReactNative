@@ -22,7 +22,7 @@ var MainPage = require('./app/routes/MainPage');
 
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
-class POC_ReactNative extends Component {
+class POC_ReactNative extends React.Component {
   
   render() {
     return (

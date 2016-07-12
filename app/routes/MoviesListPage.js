@@ -23,7 +23,7 @@ import ThumbnailMovie from '../components/ThumbnailMovie';
 
 
 
-class MainPage extends Component {
+class MainPage extends React.Component {
   
   constructor(props) {
     super(props);
