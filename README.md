@@ -38,4 +38,4 @@ For run the app in linux:
 
 ###Splash Screen
 
-![GitHub Logo](/art/splash_A.png)
+![GitHub Logo](/art/splash_A.png=250)
