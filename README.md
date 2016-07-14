@@ -34,3 +34,8 @@ For run the app in linux:
 | react-native-swiper | 1.4.6      |  Page Swiper component for React Native. |
   
 
+##Screenshots
+
+###Splash Screen
+
+![GitHub Logo](/art/splash_A.png)
