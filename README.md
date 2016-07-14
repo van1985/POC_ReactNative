@@ -36,6 +36,16 @@ For run the app in linux:
 
 ##Screenshots
 
-###Splash Screen
-
+###Splash Screen  
+  
 <img src="/art/splash_A.png" width="250">
+<img src="/art/splash_B.png" width="250">
+<img src="/art/splash_C.png" width="250">
+
+###Dashboard Screen   
+   
+<img src="/art/home.png" width="250">   
+
+###Nav Bar   
+   
+<img src="/art/drawer.png" width="250">
